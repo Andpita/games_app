@@ -75,6 +75,16 @@ export default function Test() {
           scoreMemo.push(jogador);
         }
         setMemoGame(scoreMemo);
+
+        const novoArray = [...scoreMemo];
+        const ordenado = novoArray.sort((jogadorA, jogadorB) => {
+          if (jogadorA.points > jogadorB.points) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        setMemoGame(ordenado);
       });
     }
 
