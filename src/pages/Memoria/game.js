@@ -170,7 +170,7 @@ export default function MemoriaGame() {
 
   return (
     <Container>
-      <div className="container">
+      <div className="containerz">
         <h1 className="temp">Memory Game v1</h1>
         <header className="header">
           <span>
