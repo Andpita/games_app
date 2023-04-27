@@ -48,7 +48,7 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.section`
-  max-width: 800px;
+  max-width: 900px;
   background-color: white;
   margin: 30px auto;
   padding: 30px;
