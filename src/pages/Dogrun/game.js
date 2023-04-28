@@ -24,7 +24,7 @@ export default function MemoriaGame() {
       player.innerHTML = namePlayer;
     };
 
-    document.addEventListener('keypress', (e) => {
+    document.addEventListener('mousedown', (e) => {
       if (flag === 0) {
         jump();
       } else {
