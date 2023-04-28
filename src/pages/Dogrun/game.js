@@ -32,6 +32,14 @@ export default function MemoriaGame() {
       }
     });
 
+    document.addEventListener('keypress', (e) => {
+      if (flag === 0) {
+        jump();
+      } else {
+        return;
+      }
+    });
+
     const jump = () => {
       const dog = document.querySelector('.dog');
 
