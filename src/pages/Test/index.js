@@ -1,9 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Container } from '../../styles/GlobalStyle';
-import { Title, Paragrago } from './styled';
+import { Title, Paragrago, Jogos, ImgInitial, ImgInitial2 } from './styled';
 import axios from '../../services/axios';
 import * as exampleActions from '../../store/modules/example/actions';
 
@@ -11,38 +11,39 @@ export default function Test() {
   //toast.success('Teste sucesso!');
   //toast.error('Teste sucesso!');
 
-  React.useEffect(() => {
-    async function getScore() {
-      console.log('teste1');
-      const score = await axios.get('/score');
-      console.log('teste1');
-      const { data } = score;
-      console.log('teste3');
-      console.log(data);
-      console.log('teste4');
-    }
+  const history = useHistory();
 
-    getScore();
-  }, []);
-
-  const dispatch = useDispatch();
-
-  function handleClick(e) {
+  function handleClickDog(e) {
     e.preventDefault();
+    history.push('/dog');
+  }
 
-    dispatch(exampleActions.clicaBotaoRequest());
+  function handleClickMemory(e) {
+    e.preventDefault();
+    history.push('/memoria');
   }
 
   return (
     <Container>
-      <Title isRed={false}>
-        Página de Login
-        <small>Olá mundo!</small>
-      </Title>
-      <Paragrago>Lorem ipsum solor sit amet.</Paragrago>
-      <button type="button" onClick={handleClick}>
-        Enviar
-      </button>
+      <Title isRed={true}>PAGINA INICIAL</Title>
+      <Jogos>
+        <div className="jogo1">
+          <ImgInitial src="./img/dog.png" onClick={handleClickDog} />
+          <p>Dog Run</p>
+        </div>
+        <div className="jogo2">
+          <ImgInitial2 src="./img/memo.png" onClick={handleClickMemory} />
+          <p>Memória</p>
+        </div>
+        <div className="jogo3">
+          <ImgInitial src="./img/space.png" />
+          <p>Navezinha</p>
+        </div>
+        <div className="jogo4">
+          <ImgInitial src="./img/samurai.png" />
+          <p>Samurai Wars</p>
+        </div>
+      </Jogos>
     </Container>
   );
 }

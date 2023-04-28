@@ -15,5 +15,20 @@ font-size: 50px;
 `;
 
 export const ImgInitial = styled.img`
-  max-width: 100px;
+  width: 100%;
+`;
+
+export const Formulario = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+
+h2 {
+  margin: 10px;
+}
+
+.image {
+  width: 200px;
+  margin: 10px auto;
+}
 `;

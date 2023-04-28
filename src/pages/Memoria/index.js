@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 
 import { Container } from '../../styles/GlobalStyle';
-import { Title, Paragrago, ImgInitial } from './styled';
+import { Title, Paragrago, ImgInitial, Formulario } from './styled';
 import axios from '../../services/axios';
 import * as exampleActions from '../../store/modules/example/actions';
 
@@ -25,28 +25,30 @@ export default function Test() {
   };
 
   return (
-    <Container>
-      Pagina do joguinho da memoria
-      <form className="form" onSubmit={handleSubmit}>
-        <h2>Jogo da Memória v1</h2>
+    <Container isMemo={true}>
+      <Formulario>
+        <form className="form" onSubmit={handleSubmit}>
+          <h2>Jogo da Memória v1</h2>
+          <div className="image">
+            <ImgInitial src="./img/memo.png" />
+          </div>
 
-        <ImgInitial src="./img/memo.png" />
-
-        <div>
-          <input
-            type="text"
-            name="nome"
-            id="nome"
-            className="player"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            placeholder="Seu nome"
-          />
-          <button type="submit" className="input_button">
-            Play
-          </button>
-        </div>
-      </form>
+          <div>
+            <input
+              type="text"
+              name="nome"
+              id="nome"
+              className="player"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              placeholder="Seu nome"
+            />
+            <button type="submit" className="input_button">
+              Play
+            </button>
+          </div>
+        </form>
+      </Formulario>
     </Container>
   );
 }

@@ -12,6 +12,7 @@ import {
   Div1,
   Div2,
   Divs,
+  P2,
 } from './styled';
 import axios from '../../services/axios';
 import * as exampleActions from '../../store/modules/example/actions';
@@ -101,16 +102,12 @@ export default function Test() {
 
   return (
     <Container>
-      <Title isRed={false}>
-        Página de Login
-        <small>Olá mundo!</small>
-      </Title>
-      <Paragrago>Lorem ipsum solor sit amet.</Paragrago>
-      <Linha> Nome / Pontos / jogo </Linha>
+      <Paragrago>Highscores:</Paragrago>
+      <P2> Os 10 melhores classificados: </P2>
 
       <Divs>
         <Div1>
-          JOGO DO CACHORRINHO
+          <Title>JOGO DO CACHORRINHO</Title>
           <Lista2>
             <Linha className="pos">P</Linha>
             <Linha>Nick</Linha>
@@ -118,7 +115,9 @@ export default function Test() {
           </Lista2>
           {dogGame.map((jogador, index) => {
             const indexNew = index + 1;
-
+            if (indexNew > 10) {
+              return;
+            }
             return (
               <Lista key={String(jogador.id)}>
                 <Linha className="pos">{indexNew}</Linha>
@@ -130,7 +129,7 @@ export default function Test() {
         </Div1>
 
         <Div2>
-          JOGO DA MEMÓRIA
+          <Title>JOGO DA MEMÓRIA</Title>
           <Lista2>
             <Linha className="pos">P</Linha>
             <Linha>Nick</Linha>
@@ -139,19 +138,19 @@ export default function Test() {
           {memoGame.map((jogador, index) => {
             const indexNew = index + 1;
 
+            if (indexNew > 10) {
+              return;
+            }
             return (
               <Lista key={String(jogador.id)}>
                 <Linha className="pos">{indexNew}</Linha>
                 <Linha className="nome">{jogador.nome}</Linha>
-                <Linha className="points">{jogador.points}</Linha>
+                <Linha className="points">{jogador.points} s</Linha>
               </Lista>
             );
           })}
         </Div2>
       </Divs>
-      <button type="button" onClick={handleClick}>
-        Enviar
-      </button>
     </Container>
   );
 }

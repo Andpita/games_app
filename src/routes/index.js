@@ -13,7 +13,7 @@ import playMemory from '../pages/Memoria/game';
 export default function Routes() {
   return (
     <Switch>
-      <MyRoute exact path="/test" component={Test} />
+      <MyRoute exact path="/" component={Test} />
       <MyRoute exact path="/score" component={HighScore} />
       <MyRoute exact path="/memoria" component={Memoria} />
       <MyRoute exact path="/playMemory" component={playMemory} />
