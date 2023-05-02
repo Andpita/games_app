@@ -9,6 +9,13 @@ export const Title = styled.h1`
   text-align: center;
   color: ${(props) => (props.isRed ? 'red' : 'blue')};
   background-color: paleturquoise;
+
+  //media 900
+  @media (max-width: 900px) {
+
+  max-width: 600px;
+  margin: 0 auto;
+}
 `;
 
 export const Paragrago = styled.p`
@@ -22,6 +29,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 
+@media (max-width: 600px) {
+flex-direction: column;
+}
+
 div {
   width: 300px;
   height: 300px;
@@ -33,6 +44,17 @@ div {
   p {
     padding-top: 10px;
   }
+
+  //media 900
+  @media (max-width: 900px) {
+
+  width: 150px;
+  height: 150px;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+}
 }
 
 .jogo1 {
@@ -54,9 +76,25 @@ div {
 export const ImgInitial = styled.img`
   width: 180px;
   height: 180px;
+
+  //media 900
+  @media (max-width: 900px) {
+
+  width: 90px;
+  height: 90px;
+  }
+
 `;
 
 export const ImgInitial2 = styled.img`
   width: 220px;
   height: 180px;
+
+  //media 900
+  @media (max-width: 900px) {
+
+  width: 110px;
+  height: 90px;
+  }
+}
 `;

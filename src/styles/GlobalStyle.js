@@ -38,17 +38,22 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
-    background: ${color1};
+    background: ${color3};
   }
 
   ul {
     list-style: none;
   }
 
+  input {
+     padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
 `;
 
 export const Container = styled.section`
-  max-width: 900px;
+  max-width: 1000px;
   margin: 30px auto;
   padding: 30px;
   border-radius: 5px;
@@ -60,5 +65,7 @@ export const Container = styled.section`
     return 'white';
   }};
 
-
+@media (max-width: 360px) {
+  font-size: 12px;
+}
 `;

@@ -40,13 +40,30 @@ overflow-y: hidden;
 
 .points {
   text-align: center;
-  color: red
+  color: red;
+  max-width: 24%;
 }
 
 .pos {
   text-align: center;
-  width: 100px;
+  max-width: 10%;
  }
+
+
+ @media (max-width: 700px) {
+  .points {
+  max-width: 40px;
+   }
+
+   @media (max-width: 350px) {
+  .nome {
+   font-size: 12px;
+   }
+   .points {
+    font-size: 12px;
+
+}
+
 `;
 
 export const Lista2 = styled.ul`
@@ -61,26 +78,31 @@ text-align: center;
   text-align: center;
   width: 100px;
  }
+
 `;
 
 export const Divs = styled.div`
 display: flex;
-width: 100%;
+max-width: 100%;
+
+@media (max-width: 700px) {
+  flex-direction: column;
+}
 `;
 
 export const Div1 = styled.div`
 width: 100%;
 padding: 10px 20px 20px 20px;
-margin: 20px;
-background-color: lightcoral;
+margin: 10px 20px 10px 10px;
+background-color: lightgreen;
 border-radius: 7px;
 `;
 
 export const Div2 = styled.div`
 width: 100%;
 padding: 10px 20px 20px 20px;
-margin: 20px;
-background-color: lightblue;
+margin: 10px 20px 10px 10px;
+background-color: salmon;
 border-radius: 7px;
 `;
 

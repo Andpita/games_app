@@ -60,6 +60,8 @@ export default function MemoriaGame() {
 
     const loop = setInterval(() => {
       const arbusto = document.querySelector('.arbusto');
+      const midiaq = +arbusto.clientWidth;
+
       if (arbusto) {
         const arbustoPosition = arbusto.offsetLeft;
 
@@ -72,9 +74,30 @@ export default function MemoriaGame() {
           .bottom.replace('px', '');
 
         if (
-          arbustoPosition <= 130 &&
+          (midiaq === 100) & (arbustoPosition <= 130) &&
           arbustoPosition >= -20 &&
           dogPosition < 50
+        ) {
+          console.log('morreu');
+          //Definindo posição do arbusto;
+          arbusto.style.animation = 'none';
+          arbusto.style.left = `${arbustoPosition}px`;
+
+          //definindo posição do dog;
+          dog.src = './img/god.png';
+          dog.style.bottom = `${dogPosition}px`;
+          dog.style.animation = 'none';
+
+          mode === 'dead';
+          clearInterval(loop);
+          clearInterval(looppoint);
+
+          enviarDados();
+        }
+        if (
+          (midiaq === 40) & (arbustoPosition <= 45) &&
+          arbustoPosition >= -10 &&
+          dogPosition < 20
         ) {
           console.log('morreu');
           //Definindo posição do arbusto;

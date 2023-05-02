@@ -191,11 +191,6 @@ export default function MemoriaGame() {
           v1.0.0 - <a>01/04/2023</a>
         </p>
       </footer>
-      <div className="App">
-        <header className="App-header">
-          {seconds} seconds have elapsed since mounting.
-        </header>
-      </div>
     </Container>
   );
 }

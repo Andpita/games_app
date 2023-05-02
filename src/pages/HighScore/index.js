@@ -103,21 +103,22 @@ export default function Test() {
   return (
     <Container>
       <Paragrago>Highscores:</Paragrago>
-      <P2> Os 10 melhores classificados: </P2>
+      <P2> Os 20 melhores classificados: </P2>
 
       <Divs>
         <Div1>
-          <Title>JOGO DO CACHORRINHO</Title>
+          <Title>DOG RUN</Title>
           <Lista2>
-            <Linha className="pos">P</Linha>
+            <Linha className="pos"></Linha>
             <Linha>Nick</Linha>
             <Linha>Pontos</Linha>
           </Lista2>
           {dogGame.map((jogador, index) => {
             const indexNew = index + 1;
-            if (indexNew > 10) {
+            if (indexNew > 20) {
               return;
             }
+
             return (
               <Lista key={String(jogador.id)}>
                 <Linha className="pos">{indexNew}</Linha>
@@ -131,14 +132,14 @@ export default function Test() {
         <Div2>
           <Title>JOGO DA MEMÓRIA</Title>
           <Lista2>
-            <Linha className="pos">P</Linha>
+            <Linha className="pos"></Linha>
             <Linha>Nick</Linha>
             <Linha>Pontos</Linha>
           </Lista2>
           {memoGame.map((jogador, index) => {
             const indexNew = index + 1;
 
-            if (indexNew > 10) {
+            if (indexNew > 20) {
               return;
             }
             return (

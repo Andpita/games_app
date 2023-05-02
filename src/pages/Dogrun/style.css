@@ -9,17 +9,19 @@ body {
 }
 
 .container {
+  aspect-ratio: 4/2;
   width: 100%;
-  height: 500px;
   margin: 15px auto;
   position: relative;
   overflow: hidden;
   border: 10px solid black;
+
 }
 
 .container {
   /*background*/
   background: url('../../../public/img/back.jpg');
+  background-size: cover;
   background-repeat: repeat-x;
 }
 
@@ -29,10 +31,19 @@ body {
   bottom: 0;
   width: 100px;
   left: 50px;
+
+  @media (max-width: 500px) {
+    width: 33px;
+    left: 18px;
+  }
 }
 
 .dogjump {
   animation: jump 0.8s ease-out;
+
+  @media (max-width: 500px) {
+    animation: jump2 0.8s ease-out;
+  }
 }
 
 .arbusto {
@@ -41,6 +52,11 @@ body {
   bottom: -10px;
   width: 100px;
   right: -110px;
+
+  @media (max-width: 500px) {
+    width: 40px;
+    right: -38px;
+  }
 }
 
 .clouds {
@@ -49,6 +65,12 @@ body {
   top: 30px;
   width: 300px;
   right: -300px;
+
+  @media (max-width: 500px) {
+    width: 100px;
+    right: -100px;
+    top: 10px
+  }
 }
 
 
@@ -71,7 +93,7 @@ body {
 
 .content {
   display: flex;
-  width: 700px;
+  max-width: 700px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -94,6 +116,7 @@ h1 {
   }
 }
 
+
 @keyframes jump {
 
   0% {
@@ -110,6 +133,29 @@ h1 {
 
   60% {
       bottom: 100px;
+  }
+
+  100% {
+      bottom: 0;
+  }
+}
+
+@keyframes jump2 {
+
+  0% {
+      bottom: 0;
+  }
+
+  40% {
+      bottom: 50px;
+  }
+
+  50% {
+      bottom: 50px;
+  }
+
+  60% {
+      bottom: 50px;
   }
 
   100% {
