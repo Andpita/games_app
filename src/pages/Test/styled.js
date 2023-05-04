@@ -67,9 +67,12 @@ div {
 }
 .jogo3 {
   background-color: gray;
+  cursor: pointer;
+
 }
 .jogo4 {
   background-color: lightsteelblue;
+  cursor: not-allowed;
 }
 `;
 

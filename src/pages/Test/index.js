@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Container } from '../../styles/GlobalStyle';
@@ -23,6 +23,10 @@ export default function Test() {
     history.push('/memoria');
   }
 
+  function handleClickSpace(e) {
+    window.location.href = 'https://dog.andpita.net';
+  }
+
   return (
     <Container>
       <Title isRed={true}>PAGINA INICIAL</Title>
@@ -36,7 +40,7 @@ export default function Test() {
           <p>Memória</p>
         </div>
         <div className="jogo3">
-          <ImgInitial src="./img/space.png" />
+          <ImgInitial src="./img/space.png" onClick={handleClickSpace} />
           <p>Navezinha</p>
         </div>
         <div className="jogo4">
