@@ -62,6 +62,7 @@ export const Container = styled.section`
   background-color:  ${(props) => {
     if (props.isDog) return 'lightgreen';
     if (props.isMemo) return 'salmon';
+    if (props.isSpace) return 'gray';
     return 'white';
   }};
 

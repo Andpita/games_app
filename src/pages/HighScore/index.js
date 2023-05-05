@@ -25,10 +25,12 @@ export default function Test() {
   const [score, setScore] = React.useState([]);
   const [dogGame, setDogGame] = React.useState([]);
   const [memoGame, setMemoGame] = React.useState([]);
+  const [spaceGame, setSpaceGame] = React.useState([]);
 
   React.useEffect(() => {
     const scoreDogs = [];
     const scoreMemo = [];
+    const scoreSpace = [];
 
     async function getScore() {
       const score = await axios.get('/score');
@@ -36,16 +38,6 @@ export default function Test() {
     }
 
     getScore();
-
-    /* async function dataGameDog() {
-      const todosScores = await [...score];
-      const arraydogs = todosScores.map((jogador) => {
-        if (jogador.game === 'Dog') {
-          scoreDogs.push(jogador);
-        }
-        setDogGame(scoreDogs);
-      });
-    }*/
 
     async function dataGameDog() {
       const todosScores = await [...score];
@@ -90,6 +82,28 @@ export default function Test() {
     }
 
     dataGameMemo();
+
+    async function dataGameSpace() {
+      const todosScores = await [...score];
+      const arraydogs = todosScores.map((jogador) => {
+        if (jogador.game === 'Space') {
+          scoreSpace.push(jogador);
+        }
+        setSpaceGame(scoreSpace);
+
+        const novoArray = [...scoreSpace];
+        const ordenado = novoArray.sort((jogadorA, jogadorB) => {
+          if (jogadorA.points < jogadorB.points) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        setSpaceGame(ordenado);
+      });
+    }
+
+    dataGameSpace();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [score]);
 
@@ -137,6 +151,29 @@ export default function Test() {
             <Linha>Pontos</Linha>
           </Lista2>
           {memoGame.map((jogador, index) => {
+            const indexNew = index + 1;
+
+            if (indexNew > 20) {
+              return;
+            }
+            return (
+              <Lista key={String(jogador.id)}>
+                <Linha className="pos">{indexNew}</Linha>
+                <Linha className="nome">{jogador.nome}</Linha>
+                <Linha className="points">{jogador.points} s</Linha>
+              </Lista>
+            );
+          })}
+        </Div2>
+
+        <Div2>
+          <Title>JOGO DA NAVE</Title>
+          <Lista2>
+            <Linha className="pos"></Linha>
+            <Linha>Nick</Linha>
+            <Linha>Pontos</Linha>
+          </Lista2>
+          {spaceGame.map((jogador, index) => {
             const indexNew = index + 1;
 
             if (indexNew > 20) {

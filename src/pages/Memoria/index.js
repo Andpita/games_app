@@ -38,7 +38,7 @@ export default function Test() {
               type="text"
               name="nome"
               id="nome"
-              className="player"
+              className="playerName"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               placeholder="Seu nome"

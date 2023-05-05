@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.containerSpace {
+  background-color: rgb(0, 0, 0);
+  max-width: 1000px;
+  margin: 0px auto;
+  height: 550px;
+  padding: 50px 0;
+}
+
+.space {
+  width: 600px;
+  margin: 0px auto;
+  height: 100%;
+  background-image: url('../../../public/img/bg.gif');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.navediv {
+  width: 50px;
+  height: 70px;
+  position: relative;
+  bottom: 72px;
+  background-image: url('../../../public/img/cometa.gif');
+  background-size: cover;
+  background-position: center;
+ /*transform-style: preserve-3d;
+  transform: rotateX(0deg);*/
+}
+
+.player {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  left: 45%;
+  background-image: url('../../../public/img/player.gif');
+  background-size: cover;
+  background-position: center;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transition: all 50ms ease-out;
+}
+
+.select {
+  animation: naves 1500ms linear;
+}
+
+.coliderOff {
+  color: red;
+}
+
+.meta {
+  display: flex;
+  background-color: white;
+  width: 320px;
+  margin: 10px auto;
+  justify-content: space-between  ;
+}
+
+
+.points {
+  font-weight: 800;
+}
+
+.controls {
+  display: none;
+}
+
+.projetil {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  bottom: 50px;
+  animation: projetil 1s linear;
+  background-image: url('../../../public/img/projetil.png');
+  background-size: cover;
+  background-position: center;
+
+}
+
+@media (max-width: 600px) {
+
+  .divArc {
+    font-size: 12px;
+  }
+
+  .space {
+    width: 300px;
+  }
+
+
+  .navediv {
+    width: 25px;
+    height: 35px;
+    position: relative;
+    bottom: 36px;
+  }
+
+  .player {
+    width: 25px;
+    height: 25px;
+  }
+
+  .controls {
+    display: flex;
+    position: absolute;
+    left: 30%;
+    top: 80%;
+    color: white;
+
+  }
+
+  .controls div {
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: rgb(27, 27, 27);
+    border-radius: 20%;
+    margin: 5px;
+    cursor: pointer;
+  }
+
+
+}
+
+
+@keyframes projetil {
+  0% {
+      bottom: 'from';
+  }
+
+  100% {
+      bottom: 100%;
+  }
+}
+
+@keyframes naves {
+  0% {
+      top: 0%;
+  }
+
+  50% {
+      top: 50%
+  }
+
+  100% {
+      top: 100%;
+  }
+}
+
+@keyframes moveX {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: 50px;
+  }
+
+}

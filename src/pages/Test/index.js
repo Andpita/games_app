@@ -24,7 +24,8 @@ export default function Test() {
   }
 
   function handleClickSpace(e) {
-    window.location.href = 'https://dog.andpita.net';
+    e.preventDefault();
+    history.push('/space');
   }
 
   return (

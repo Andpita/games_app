@@ -16,28 +16,28 @@ export default function Test() {
   const [nome, setNome] = React.useState('');
 
   React.useEffect(() => {
-    localStorage.setItem('playerD', nome);
+    localStorage.setItem('playerS', nome);
   }, [nome]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/playDog');
+    history.push('/playSpace');
   };
 
   return (
-    <Container isDog={true}>
+    <Container isSpace={true}>
       <Formulario>
         <form className="form" onSubmit={handleSubmit}>
           <h2>Dog Run v1</h2>
           <div className="image">
-            <ImgInitial src="./img/dog.png" />
+            <ImgInitial src="./img/space.png" />
           </div>
           <div>
             <input
               type="text"
               name="nome"
               id="nome"
-              className="playerName "
+              className="playerName"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               placeholder="Seu nome"

@@ -6,13 +6,11 @@ import {
   FaPhotoVideo,
   FaTrophy,
   FaSpaceShuttle,
+  FaShieldAlt,
+  FaRocket,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-function handleClickSpace(e) {
-  window.location.href = 'https://dog.andpita.net';
-}
 
 export default function Header() {
   const botaoClicado = useSelector((state) => state.example.botaoClicado);
@@ -27,8 +25,11 @@ export default function Header() {
       <Link to="/memoria">
         <FaPhotoVideo size={30} />
       </Link>
-      <Link to="/" onClick={handleClickSpace}>
-        <FaSpaceShuttle size={30} />
+      <Link to="/space">
+        <FaRocket size={28} />
+      </Link>
+      <Link to="/">
+        <FaShieldAlt size={28} color="lightgreen" />
       </Link>
       <Link to="/score">
         <FaTrophy size={28} color="gold" />

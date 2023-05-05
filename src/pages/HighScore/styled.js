@@ -82,11 +82,15 @@ text-align: center;
 `;
 
 export const Divs = styled.div`
-display: flex;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+min-width: 260px;
 max-width: 100%;
+gap: 15px;
 
 @media (max-width: 700px) {
-  flex-direction: column;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
 }
 `;
 
