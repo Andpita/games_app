@@ -183,7 +183,7 @@ export default function Test() {
               <Lista key={String(jogador.id)}>
                 <Linha className="pos">{indexNew}</Linha>
                 <Linha className="nome">{jogador.nome}</Linha>
-                <Linha className="points">{jogador.points} s</Linha>
+                <Linha className="points">{jogador.points} P</Linha>
               </Lista>
             );
           })}

@@ -68,5 +68,7 @@ export const Container = styled.section`
 
 @media (max-width: 360px) {
   font-size: 12px;
+  margin: 2px auto;
+  padding: 2px;
 }
 `;

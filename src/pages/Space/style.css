@@ -98,8 +98,8 @@
 
   .space {
     width: 300px;
+    height: 90%;
   }
-
 
   .navediv {
     width: 25px;
@@ -115,11 +115,10 @@
 
   .controls {
     display: flex;
-    position: absolute;
-    left: 30%;
-    top: 80%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
     color: white;
-
   }
 
   .controls div {

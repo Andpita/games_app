@@ -116,11 +116,14 @@ export default function SpaceGame() {
           variavel.classList.remove('select');
           clearInterval(down);
         }
-        if (variavel.classList.contains('select') && pNave === -72) {
+        if (
+          (variavel.classList.contains('select') && pNave === -72) ||
+          (variavel.classList.contains('select') && pNave === -36)
+        ) {
           variavel.classList.remove('select');
           clearInterval(down);
         }
-      }, 10);
+      }, 100);
     }
 
     //CheckColiser
@@ -208,8 +211,8 @@ export default function SpaceGame() {
         let limitInferior = 330 - positionY;
         let limitSuperior = limitInferior + 110;
         if (largura < 600) {
-          limitInferior = 390 - positionY;
-          limitSuperior = limitInferior + 60;
+          limitInferior = 350 - positionY;
+          limitSuperior = limitInferior + 30;
         }
 
         if (
@@ -280,20 +283,21 @@ export default function SpaceGame() {
       }
 
       const click = e.target.innerHTML;
-      console.log(e);
       let positionX = +window.getComputedStyle(player).left.replace('px', '');
       let positionY = +window.getComputedStyle(player).bottom.replace('px', '');
 
-      if (click === 'A') {
+      if (click === '←') {
         if (positionX < 10) return;
         player.style.left = `${positionX - 15}px`;
-      } else if (click === 'W') {
+      } else if (click === 'P') {
+        createProjetil();
+      } else if (click === '↑') {
         if (positionY > 200) return;
         player.style.bottom = `${positionY + 15}px`;
-      } else if (click === 'S') {
+      } else if (click === '→') {
         if (positionY < 10) return;
         player.style.bottom = `${positionY - 15}px`;
-      } else if (click === 'D') {
+      } else if (click === '↓') {
         if (positionX > 540) return;
         if (largura < 800) {
           if (positionX > 265) return;
@@ -394,7 +398,7 @@ export default function SpaceGame() {
 
       qtdArma--;
       municao.innerHTML = qtdArma;
-
+      console.log(projetil);
       return projetil;
     };
 
@@ -504,7 +508,7 @@ export default function SpaceGame() {
             variavel.classList.remove('coliderOff');
           }, 500);
         }
-      }, 10);
+      }, 50);
     }
   }, []);
 
@@ -533,13 +537,14 @@ export default function SpaceGame() {
           <div className="navediv nave8"></div>
           <div className="player"></div>
         </div>
+        <div className="controls">
+          <div className="left">P</div>
+          <div className="left">←</div>
+          <div className="up">↑</div>
+          <div className="down">→</div>
+          <div className="rigth">↓</div>
+        </div>
       </section>
-      <div className="controls">
-        <div className="left">A</div>
-        <div className="up">W</div>
-        <div className="down">D</div>
-        <div className="rigth">S</div>
-      </div>
     </Container>
   );
 }

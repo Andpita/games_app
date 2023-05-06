@@ -49,6 +49,10 @@ export default function Test() {
           <p>Samurai Wars</p>
         </div>
       </Jogos>
+      <Jogos>
+        <div>Versão 1.0.0</div>
+        <span>*Atualizado 05/05/23*</span>
+      </Jogos>
     </Container>
   );
 }

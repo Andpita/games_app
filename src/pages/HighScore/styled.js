@@ -41,7 +41,7 @@ overflow-y: hidden;
 .points {
   text-align: center;
   color: red;
-  max-width: 24%;
+  max-width: 28%;
 }
 
 .pos {
