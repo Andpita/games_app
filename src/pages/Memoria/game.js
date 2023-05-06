@@ -166,6 +166,10 @@ export default function MemoriaGame() {
     };
 
     exec();
+
+    return () => {
+      clearInterval(loop);
+    };
   }, []);
 
   return (
