@@ -15,6 +15,9 @@ export default function MemoriaGame() {
     const score = document.querySelector('.points');
     const player = document.querySelector('.changeName');
     const nuvem = document.querySelector('.clouds');
+    const dogGame = document.querySelector('.dogGame');
+
+    if (!dogGame) return;
 
     let flag = 0;
     const mode = 'isRun';
@@ -60,6 +63,7 @@ export default function MemoriaGame() {
 
     const loop = setInterval(() => {
       const arbusto = document.querySelector('.arbusto');
+      if (!arbusto) return;
       const midiaq = +arbusto.clientWidth;
 
       if (arbusto) {
@@ -158,10 +162,15 @@ export default function MemoriaGame() {
     }, 1000);
 
     exec();
+
+    return () => {
+      clearInterval(looppoint);
+      clearInterval(loop);
+    };
   }, []);
 
   return (
-    <Container className="dogRumOn">
+    <Container className="dogRumOn dogGame">
       <div className="score">
         SCORE <span className="points">00</span>
       </div>

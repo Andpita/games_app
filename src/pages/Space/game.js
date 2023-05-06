@@ -9,18 +9,23 @@ import { Container } from '../../styles/GlobalStyle';
 import { Title, Paragrago, ImgInitial } from './styled';
 import axios from '../../services/axios';
 import * as exampleActions from '../../store/modules/example/actions';
+import { func } from 'prop-types';
 
 export default function SpaceGame() {
   React.useEffect(() => {
     const naves = document.querySelectorAll('.navediv');
     const player = document.querySelector('.player');
     const space = document.querySelector('.space');
+    const spaceGame = document.querySelector('.spaceGame');
+
+    if (!spaceGame) return;
 
     let n;
     let b;
     let endGame = false;
     let pontos = 0;
     let largura = window.screen.width;
+    let municao = 5;
 
     const enviarDados = async () => {
       const namePlayer = localStorage.getItem('playerS');
@@ -64,6 +69,7 @@ export default function SpaceGame() {
       let pontosGanho = 1 * base;
       pontos = pontos + pontosGanho;
 
+      if (!pontuacao) return;
       pontuacao.innerHTML = pontos.toFixed(2);
 
       if (endGame) {
@@ -85,6 +91,13 @@ export default function SpaceGame() {
     meteorExp.volume = 0.3;
     meteorExp2.volume = 0.3;
 
+    const audio = new Promise(function (resolve, reject) {
+      resolve(audioPlay.autoplay);
+    });
+    setTimeout(() => {
+      audio.then(audioPlay.play());
+    }, 2000);
+
     //Random function
     function randomNumber(max, min) {
       const number = Math.floor(Math.random() * (max - min) + min);
@@ -98,7 +111,6 @@ export default function SpaceGame() {
       if (variavel.classList.contains('select')) {
         return;
       }
-
       variavel.classList.add('select');
 
       const down = setInterval(() => {
@@ -237,8 +249,9 @@ export default function SpaceGame() {
       }, 100);
     }
 
-    //Controles
-    const move = document.addEventListener('keypress', (e) => {
+    //Controles (PC)
+    document.addEventListener('keypress', movePc);
+    function movePc(e) {
       if (endGame) {
         return;
       }
@@ -275,9 +288,11 @@ export default function SpaceGame() {
       if (e.code === 'Space') {
         createProjetil();
       }
-    });
+    }
 
-    const move2 = document.addEventListener('touchstart', (e) => {
+    //Controles celular
+    document.addEventListener('touchstart', moveCelular);
+    function moveCelular(e) {
       if (endGame) {
         return;
       }
@@ -308,7 +323,7 @@ export default function SpaceGame() {
           console.log('largura MAIOR', largura);
         }
       }
-    });
+    }
 
     //Naves Loop
     const system = setInterval(() => {
@@ -355,10 +370,12 @@ export default function SpaceGame() {
         CheckColiser(7);
         checkDisparo(7);
       }
-      if (b === 47) {
+      if (b === 1) {
         console.log('Cai um bonus :)');
-        let municao = document.querySelector('.municao');
-        municao.innerHTML = +municao.innerHTML + 1;
+        let tiros = document.querySelector('.municao');
+        if (!tiros) return;
+        municao++;
+        tiros.innerHTML = +municao;
       }
 
       if (endGame) {
@@ -366,23 +383,17 @@ export default function SpaceGame() {
       }
     }, 400);
 
-    const audio = new Promise(function (resolve, reject) {
-      resolve(audioPlay.autoplay);
-    });
-
-    setTimeout(() => {
-      audio.then(audioPlay.play());
-    }, 2000);
-
     //Projetil
     const createProjetil = () => {
       const projeties = document.querySelectorAll('.projetil');
-      let municao = document.querySelector('.municao');
-      let qtdArma = municao.innerHTML;
+      let tiros = document.querySelector('.municao');
+      if (!tiros) return;
 
       if (projeties.length >= 3) return;
-      if (qtdArma < 1) return;
+      if (municao < 1) return;
 
+      municao--;
+      tiros.innerHTML = municao;
       const projetil = document.createElement('div');
       projetil.classList.add('projetil');
       let positionX = +window.getComputedStyle(player).left.replace('px', '');
@@ -396,12 +407,10 @@ export default function SpaceGame() {
 
       space.appendChild(projetil);
 
-      qtdArma--;
-      municao.innerHTML = qtdArma;
-      console.log(projetil);
       return projetil;
     };
 
+    //Colisao de disparos
     function checkDisparo(n) {
       let rangerA;
       let rangerB;
@@ -494,7 +503,7 @@ export default function SpaceGame() {
         if (
           positionX >= rangerA &&
           positionX <= rangerB &&
-          Xnave + 30 > positionYProjetil
+          Xnave + 40 > positionYProjetil
         ) {
           meteorExp.play();
 
@@ -510,10 +519,18 @@ export default function SpaceGame() {
         }
       }, 50);
     }
+
+    return () => {
+      clearInterval(score);
+      clearInterval(system);
+      audioPlay.pause();
+      document.removeEventListener('touchstart', moveCelular);
+      document.removeEventListener('click', movePc);
+    };
   }, []);
 
   return (
-    <Container>
+    <Container className="spaceGame">
       <section className="containerSpace">
         <div className="meta">
           <div className="_nome divArc">

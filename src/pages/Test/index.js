@@ -50,8 +50,8 @@ export default function Test() {
         </div>
       </Jogos>
       <Jogos>
-        <div>Versão 1.0.0</div>
-        <span>*Atualizado 05/05/23*</span>
+        <div>Versão 1.0.1</div>
+        <span>*Atualizado 06/05/23*</span>
       </Jogos>
     </Container>
   );
