@@ -117,7 +117,7 @@ export default function Test() {
   return (
     <Container>
       <Paragrago>Highscores:</Paragrago>
-      <P2> Os 20 melhores classificados: </P2>
+      <P2> Os 10 melhores classificados: </P2>
 
       <Divs>
         <Div1>
@@ -129,7 +129,7 @@ export default function Test() {
           </Lista2>
           {dogGame.map((jogador, index) => {
             const indexNew = index + 1;
-            if (indexNew > 20) {
+            if (indexNew > 10) {
               return;
             }
 
@@ -153,7 +153,7 @@ export default function Test() {
           {memoGame.map((jogador, index) => {
             const indexNew = index + 1;
 
-            if (indexNew > 20) {
+            if (indexNew > 10) {
               return;
             }
             return (
@@ -176,7 +176,7 @@ export default function Test() {
           {spaceGame.map((jogador, index) => {
             const indexNew = index + 1;
 
-            if (indexNew > 20) {
+            if (indexNew > 10) {
               return;
             }
             return (

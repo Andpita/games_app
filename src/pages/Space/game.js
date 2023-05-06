@@ -135,7 +135,7 @@ export default function SpaceGame() {
 
       if (n === 0 && largura > 600) {
         rangerA = 0;
-        rangerB = 0; //
+        rangerB = 55; //
       }
       if (n === 0 && largura < 600) {
         rangerA = 0;
