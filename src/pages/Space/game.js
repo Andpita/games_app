@@ -307,12 +307,12 @@ export default function SpaceGame() {
       } else if (click === 'P') {
         createProjetil();
       } else if (click === '↑') {
-        if (positionY > 200) return;
+        if (positionY > 180) return;
         player.style.bottom = `${positionY + 15}px`;
-      } else if (click === '→') {
+      } else if (click === '↓') {
         if (positionY < 10) return;
         player.style.bottom = `${positionY - 15}px`;
-      } else if (click === '↓') {
+      } else if (click === '→') {
         if (positionX > 540) return;
         if (largura < 800) {
           if (positionX > 265) return;
@@ -403,6 +403,9 @@ export default function SpaceGame() {
         .bottom.replace('px', '');
 
       projetil.style.left = `${positionX + 10}px`;
+      if (largura < 600) {
+        projetil.style.left = `${positionX}px`;
+      }
       projetil.style.bottom = `${projectY + positionY + 30}px`;
 
       space.appendChild(projetil);
@@ -558,8 +561,8 @@ export default function SpaceGame() {
           <div className="left">P</div>
           <div className="left">←</div>
           <div className="up">↑</div>
-          <div className="down">→</div>
-          <div className="rigth">↓</div>
+          <div className="down">↓</div>
+          <div className="rigth">→</div>
         </div>
       </section>
     </Container>
