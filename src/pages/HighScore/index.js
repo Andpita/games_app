@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -28,10 +28,6 @@ export default function Test() {
   const [spaceGame, setSpaceGame] = React.useState([]);
 
   React.useEffect(() => {
-    const scoreDogs = [];
-    const scoreMemo = [];
-    const scoreSpace = [];
-
     async function getScore() {
       const score = await axios.get('/score');
       setScore(score.data);
@@ -39,9 +35,13 @@ export default function Test() {
 
     getScore();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     async function dataGameDog() {
-      const todosScores = await [...score];
-      const arraydogs = todosScores.map((jogador) => {
+      const scoreDogs = [];
+      const arraydogs = score.map((jogador) => {
         if (jogador.game === 'Dog') {
           scoreDogs.push(jogador);
         }
@@ -55,6 +55,7 @@ export default function Test() {
             return -1;
           }
         });
+
         setDogGame(ordenado);
       });
     }
@@ -62,8 +63,9 @@ export default function Test() {
     dataGameDog();
 
     async function dataGameMemo() {
-      const todosScores = await [...score];
-      const arraydogs = todosScores.map((jogador) => {
+      const scoreMemo = [];
+
+      const arraydogs = score.map((jogador) => {
         if (jogador.game === 'Memória') {
           scoreMemo.push(jogador);
         }
@@ -84,8 +86,8 @@ export default function Test() {
     dataGameMemo();
 
     async function dataGameSpace() {
-      const todosScores = await [...score];
-      const arraydogs = todosScores.map((jogador) => {
+      const scoreSpace = [];
+      const arraydogs = score.map((jogador) => {
         if (jogador.game === 'Space') {
           scoreSpace.push(jogador);
         }
@@ -104,7 +106,6 @@ export default function Test() {
     }
 
     dataGameSpace();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [score]);
 
   const dispatch = useDispatch();
